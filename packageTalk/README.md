@@ -24,13 +24,28 @@
 
 ## 아키텍처
 
-![아키텍처 다이어그램](./assets/architecture.png)
+```mermaid
+flowchart LR
+    Scheduler[Scheduler] --> Crawler["Crawler Workers<br/>(플랫폼별 분리)"]
+    Crawler --> Normalizer[정규화 파이프라인]
+    Normalizer --> DB[(MariaDB)]
 
+    User((User)) --> CDN[CloudFront]
+    CDN --> Frontend[Frontend]
+    Frontend --> API[Spring Boot API]
+    API --> DB
+    API --> Cache[(Redis)]
+
+    classDef store fill:#FFF4E6,stroke:#D97706,color:#1F2937
+    class DB,Cache store
 ```
-[수집 워커] → [정규화 파이프라인] → [DB] → [API 서버] → [프론트엔드]
-                                     ↓
-                                [캐시 레이어]
-```
+
+| 레이어 | 구성 |
+|---|---|
+| 수집 | Scheduler가 주기적으로 플랫폼별 Crawler Worker를 실행하여 원천 데이터 수집 |
+| 정규화 | 플랫폼별 상이한 스키마를 단일 도메인 모델로 변환 후 MariaDB에 적재 |
+| 서빙 | Spring Boot API가 정규화 데이터를 조회·비교, 자주 조회되는 결과는 Redis로 캐싱 |
+| 전달 | CloudFront로 정적 자산 전송, Frontend에서 비교 화면 렌더링 |
 
 ## 핵심 기술 결정
 
