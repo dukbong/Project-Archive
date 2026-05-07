@@ -1,10 +1,10 @@
-# pick-trip — 여행 플랫폼 비교 웹 서비스
+# packageTalk — 여행 플랫폼 비교 웹 서비스
 
 여러 여행 플랫폼에 분산된 패키지/항공/숙소 정보를 한 화면에서 비교할 수 있도록 만든 사이드 프로젝트입니다.
 
 **Live**: [https://www.packagetalk.com/](https://www.packagetalk.com/)
 
-![pick-trip 메인 화면](./assets/main.png)
+![packageTalk 메인 화면](./assets/main.png)
 
 ---
 
