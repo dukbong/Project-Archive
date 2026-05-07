@@ -2,7 +2,7 @@
 
 MyRealTrip / Klook / WAUG / KKday 4개 플랫폼의 여행 액티비티 상품을 한 검색어로 동시에 조회·비교할 수 있는 사이드 프로젝트입니다.
 
-**Live**: [https://www.packagetalk.com/](https://www.packagetalk.com/)
+**URL**: [https://www.packagetalk.com/](https://www.packagetalk.com/)
 
 ---
 
